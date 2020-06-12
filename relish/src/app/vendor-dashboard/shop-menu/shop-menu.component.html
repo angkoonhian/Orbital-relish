@@ -1,0 +1,27 @@
+<div *ngIf="Menu.length<1">
+    <h2>Your shop currently have no dishes uploaded.</h2>
+</div>
+<div style="margin-top: 50px;">
+  <button mat-raised-button (click)="OnFetchMenu()">REFRESH</button>
+</div>
+<div class="row" *ngIf="Menu.length>=1">
+    <div class="justify-content-center col-xl-4 col-lg-4 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let dish of Menu">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{dish.Name}}</mat-card-title>
+              <mat-card-subtitle>$ {{dish.price}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{dish.Description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button>EDIT</button>
+              <button mat-raised-button (click)="OnDeleteDish(dish.DishID)">DELETE</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>

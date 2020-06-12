@@ -1,0 +1,22 @@
+<div class="example-small-box mat-elevation-z4">
+    <form (ngSubmit)="onUploadDish()" #VU="ngForm">
+        <div id="Dish-data" ngModelGroup="DishData" #DishData="ngModelGroup" style="padding-top: 70px;">
+            <mat-form-field class="form-group" appearance="fill" style="padding-top: 30px;">
+                <mat-label>Name</mat-label>
+                <input matInput required id="DishName" ngModel #DishName="ngModel" name="DishName">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="form-group" appearance="fill" style="padding-top: 30px;">
+                <mat-label>Price $</mat-label>
+                <input matInput required id="Price" name="Price" ngModel #Price="ngModel">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Dish Description</mat-label>
+                <textarea matInput style="height: 260px;" required id="Description" name="Description" ngModel></textarea>
+              </mat-form-field>
+        </div>
+        <button
+          class="btn btn-warning" type="submit" [disabled]="!VU.valid">Submit</button>
+      </form>
+</div>

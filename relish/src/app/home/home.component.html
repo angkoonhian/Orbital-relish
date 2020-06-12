@@ -1,0 +1,88 @@
+<app-poster></app-poster>
+<hr>
+<div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+        <div class="col align-self-center row justify-content-center">
+            <h2>Food near you!</h2>
+        </div>
+        <hr>
+        <div class="col align-self-center row justify-content-center">
+            <h3>Enter your address or drag the icon to your address</h3>
+        </div>
+        <div class="col align-self-center row justify-content-center">
+            <form class="example-form" style="padding-right:20px;">
+                <mat-form-field class="example-full-width" style="width: 300px;">
+                    <mat-label>Enter address or postalCode</mat-label>
+                    <input matInput type="text" class="form-control"
+                    (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" 
+                    autocomplete="on" autocapitalize="on" spellcheck="on" type="text" #search>
+                </mat-form-field>
+            </form>
+            <button mat-fab color="warning" style="background-color: coral; color: azure;">
+                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                  </svg>
+            </button>
+        </div>
+        <div class="col align-self-center row justify-content-center">
+            <h3>Current address: {{address}}</h3>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12" style="margin-bottom:10px;">
+        <agm-map [latitude] = "latitude" [longitude] = "longitude">
+            <agm-marker [latitude] = "latitude" [longitude] = "longitude" (dragEnd)="markerDragEnd($event)"
+            [markerDraggable]="true"></agm-marker>
+        </agm-map>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div *ngIf="loadedPosts.length>=1" style="width: 60%; margin-top: 50px;">
+        <mat-expansion-panel >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Filter
+              </mat-panel-title>
+              <mat-panel-description>
+                Pick your preferred dishes!
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="favoriteSeason">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                    {{season}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <div>Your favorite cuisine is: {{favoriteSeason}}</div>
+        </mat-expansion-panel>
+    </div>
+</div>
+
+
+<div class="row justify-content-center">
+    <div class="row col-xl-9 col-lg-9 col-md-9 col-xs-12 justify-content-center" *ngIf="loadedPosts.length>=1" style="width: 90%;">
+        <div class="justify-content-center col-xl-4 col-lg-4 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let post of loadedPosts">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{post.VendorName}}</mat-card-title>
+                  <mat-card-subtitle>{{post.Location}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button (click)="viewStore(post)">VISIT STORE</button>
+                  <button mat-raised-button>REVIEWS</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+</div>
+

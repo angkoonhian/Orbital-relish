@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #v="ngForm">
+          <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+            <mat-form-field class="form-group" style="padding-top: 50px; margin-bottom: 0px;">
+                <mat-label for="username">Username</mat-label>
+                <input type="text" id="username" matInput class="form-control" [errorStateMatcher]="matcher" 
+                placeholder="username"ngModel name="username" required #username="ngModel">
+                <mat-error *ngIf="!username.valid && username.touched">
+                    Username is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field class="form-group" style="margin-bottom: 0px;">
+                <mat-label>Password</mat-label>
+                <input type="password" id="password" matInput [errorStateMatcher]="matcher" 
+                placeholder="password" ngModel name="password" required #password="ngModel">
+                <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+                    Please have at least 8 characters
+                </mat-error>
+                <mat-error *ngIf="!password.valid && password.touched">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field class="form-group" style="margin-bottom: 0px;">
+                <mat-label>Retype-Password</mat-label>
+                <input type="password" id="password" matInput class="form-control" [errorStateMatcher]="matcher" 
+                placeholder="re-password" ngModel name="repassword" required #repassword="ngModel">
+                <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+                    Please have at least 8 characters
+                </mat-error>
+                <mat-error *ngIf="!repassword.valid && repassword.touched">
+                    <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" id="email" matInput class="form-control" [errorStateMatcher]="matcher"
+                placeholder="example@example.com" ngModel name="email" required email #email="ngModel">
+                <mat-error *ngIf="!email.valid && email.touched">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="!email.valid && email.touched">
+                  Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input type="text" id="phoneNumber" class="form-control" matInput [errorStateMatcher]="matcher"
+                placeholder="Phone Number" ngModel name="phoneNumber" required #phoneNumber="ngModel">
+                <mat-error *ngIf="!phoneFormControl.hasError('required')">
+                  Please enter a valid Phone number
+                </mat-error>
+                <mat-error *ngIf="!phoneNumber.valid && phoneNumber.touched">
+                  Phone Number is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input type="text" id="address" class="form-control" matInput [errorStateMatcher]="matcher" 
+                placeholder="address" ngModel name="address" required #address="ngModel">
+                <mat-error *ngIf="!addressFormControl.hasError('required')">
+                  Please enter a valid address
+                </mat-error>
+                <mat-error *ngIf="!address.valid && address.touched">
+                  Address is <strong>required</strong>
+                </mat-error>
+            </mat-form-field> 
+            <mat-form-field style="padding-left: 100px;">
+                <mat-label>Postal code</mat-label>
+                <input type="text" id="postalCode" class="form-control" matInput [errorStateMatcher]="matcher" 
+                placeholder="Postal code" ngModel name="postalCode" required #postalCode="ngModel">
+                <mat-error *ngIf="!postalFormControl.hasError('required')">
+                  Please enter a valid PostalCode
+                </mat-error>
+                <mat-error *ngIf="!postalCode.valid && postalCode.touched">
+                  PostalCode is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <hr>
+            <mat-form-field>
+              <mat-label>Favorite food</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="cuisine" required>
+                <mat-option *ngFor="let cuisine of cuisines" [value]="cuisine.value" required>
+                  {{cuisine.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <hr>
+          </div>
+          <button
+            class="btn btn-warning" type="submit" [disabled]="!v.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="submitted">
+      <div class="col-xs-12">
+        <h3>Your Data</h3>
+        <p>Username: {{ user.username }}</p>
+        <p>Password: {{ user.password }}</p>
+        <p>Mail: {{ user.email }}</p>
+        <p>PhoneNumber: {{ user.phoneNumber }}</p>
+        <p>address: {{ user.address }}</p>
+        <p>postalCode: {{ user.postalCode }}</p>
+        <p>cuisine: {{ user.cuisine }}</p>
+      </div>
+    </div>
+  </div>

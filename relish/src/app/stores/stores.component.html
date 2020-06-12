@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-xl-12 col-sm-12 justify-content-around" style="background-image:url(https://material.angular.io/assets/img/examples/shiba2.jpg);
+     height: 400px; background-size:cover; filter: brightness(100%);">
+        <section ></section>
+    </div>
+</div>
+<div class="row justify-content-center" style="padding-top: 50px;">
+    <div class="row col-8 justify-content-start">
+      <h1 style="font-size: 50px"><strong>{{currentStore.VendorName}}</strong></h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="row col-lg-8 col-md-8 col-xs-12 justify-content-center" *ngIf="Menu.length>=1">
+        <div class="justify-content-center col-xl-4 col-lg-4 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let dish of Menu">
+            <mat-card class="example-card">
+                <mat-card-header style="padding-bottom:10px;">
+                  <div class="col-4 justify-content-start">
+                    <mat-card-subtitle>$ {{dish.price}}</mat-card-subtitle>
+                  </div>
+                  <div class="col-4 justify-content-center">
+                    <mat-card-title>{{dish.Name}}</mat-card-title>
+                  </div>
+                  <div class="col-4">
+                    <button mat-raised-button (click)="addToOrder(dish); totalPrice()">
+                        <svg class="bi bi-plus" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                          </svg>
+                    </button>
+                  </div>
+                </mat-card-header>
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                  <p>
+                    {{dish.Description}}
+                  </p>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+    <div class="row col-xl-2 col-lg-2 col-md-2 col-xs-12 justify-content-center" *ngIf="Orders.length>=1" style="padding-top: 10px;">
+      <div class="row col-12 justify-content-center">
+        <h1>Your Order at {{currentStore.VendorName}}</h1>
+      </div>
+      <div class="row col-12 justify-content-center" *ngFor="let order of Orders" style="height: 50px;">
+        <div class="col-4" *ngIf="order.Quantity>=1">
+          <p>
+            <svg class="bi bi-dash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" 
+            xmlns="http://www.w3.org/2000/svg" (click)="removeOrder(order); totalPrice()">
+              <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            {{order.Quantity}}
+            <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" 
+            xmlns="http://www.w3.org/2000/svg" (click)="addToOrder(order); totalPrice()">
+              <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+              <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+            </svg>
+          </p>
+        </div>
+        <div class="col-4" *ngIf="order.Quantity>=1">
+          <p>{{order.Name}}</p>
+        </div>
+        <div class="col-4" *ngIf="order.Quantity>=1">
+          <p>$ {{+order.Price * +order.Quantity}}</p>
+        </div>
+      </div> 
+      <div class="row col-12 justify-content-start">
+        <p>Subtotal:$ {{subTotal.toFixed(2)}}</p>
+      </div>
+      <div class="row col-12 justify-content-start">
+        <p>GST: 7%</p>
+      </div>
+      <div class="row col-12 justify-content-start">
+        <p>Discount: $0.00</p>
+      </div>
+      <div class="row col-12 justify-content-start">
+        <p>Total(incl GST):$ {{subTotal.toFixed(2)}}</p>
+      </div>
+      <div>
+        <button mat-raised-button (click)="checkOut()">
+          CheckOut
+        </button>
+      </div>
+    </div>
+</div>

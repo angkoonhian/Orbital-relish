@@ -1,0 +1,13 @@
+<div class="container">
+    <mat-tab-group dynamicHeight style="margin-top: 200px;">
+        <mat-tab label="Upload Dish">
+          <app-dish-upload [currentVendorID]="currentVendorID" ></app-dish-upload>
+        </mat-tab>
+        <mat-tab label="Shop Data">
+          <app-shop-data [currentVendorID]="currentVendorID"></app-shop-data>
+        </mat-tab>
+        <mat-tab label="Shop Menu">
+          <app-shop-menu [currentVendorID]="currentVendorID"></app-shop-menu>
+        </mat-tab>
+    </mat-tab-group>
+</div>

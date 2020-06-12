@@ -1,0 +1,38 @@
+<form (ngSubmit)="onLogin()" class="text-center pl-5 pr-5" #authForm="ngForm" style="padding-top:0px">
+    <div class="form-group" ngModelGroup="LoginData" #LoginData="ngModelGroup">
+      <h2><strong>Sign in (Vendor)</strong></h2>
+      <hr>
+      <img src="./assets/relish-logo.png" style="margin-bottom:10px;">
+      <mat-form-field class="form-group" style="padding-top: 50px; margin-bottom: 0px;">
+        <mat-label for="username">Username</mat-label>
+        <input type="text" id="username" matInput class="form-control"
+        placeholder="username"ngModel name="username" required #username="ngModel">
+    </mat-form-field>
+
+      <input type="password" ngModel name = "password" #password = ngModel 
+      id="defaultLoginFormPassword" 
+       class="form-control mb-4" placeholder="Password" required>
+    </div>
+  
+    <div class="d-flex justify-content-around">
+
+      <div>
+        <!-- Forgot password -->
+        <a href="">Forgot password?</a>
+      </div>
+    </div>
+  
+    <!-- Sign in button -->
+    <button mdbBtn color="info" block="true" class="my-4 btn btn-warning" type="submit"
+    [disabled]="!authForm.valid" (click)="onLogin()" mat-dialog-close>
+      Sign in
+    </button>
+  
+    <!-- Register -->
+    <h2>Not using Relish?
+        <button class="btn btn-warning" (click)="loadRegister()" mat-dialog-close>
+          Register
+        </button>
+      </h2>
+</form>
+  <!-- Default form login -->
