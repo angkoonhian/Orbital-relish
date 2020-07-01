@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-xl-4 col-lg-4 col-md-6 col-xs-12"  *ngFor="let order of Orders" style="margin-top: 20px;">
+        <mat-card class="example-card">
+            <mat-card-header style="align-items: center;">
+                <p style="text-align: center; border-bottom: solid black thin; 
+                font-weight: 600; font-size: 25px;">Orders from {{order.Order_CustomerID}}</p>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    <div class="row" style="border-bottom: solid gray thin; margin-bottom: 5px; height: 25px;">
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; font-weight: bold; text-align: center">DishName</p>
+                        </div>
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; font-weight: bold; text-align: center">Quantity</p>
+                        </div>
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; font-weight: bold; text-align: center">PriceEach</p>
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let dish of order.OrderDetails" style="height: 25px;
+                    border-bottom: solid thin rgba(187, 187, 187, 0.5);">
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; text-align: center">{{dish[0]}}</p>
+                        </div>
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; text-align: center">x {{dish[2]}}</p>
+                        </div>
+                        <div class="col-4">
+                            <p style="display: inline-block; width: 100%; text-align: center">$ {{dish[1]}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row"  style="border-bottom: solid rgba(187, 187, 187, 0.5) thin; margin-top:10px;">
+                    <div class="col-6">
+                        <p style="display: inline-block; width: 100%; text-align: center">Subtotal:</p>
+                    </div>
+                    <div class="col-6">
+                        <p style="display: inline-block; width: 100%; text-align: center">$ {{order.TotalAmount}}</p>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="row">
+                    <div class="col-6">
+                        <button mat-raised-button [disabled]="!(order.status=='Pending')" (click)="ServingOrder(order.OrderNumber)">
+                            SERVED
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button mat-button disabled>Status: {{order.status}}</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+

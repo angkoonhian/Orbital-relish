@@ -1,0 +1,15 @@
+<p style="text-align: center; font-weight: 500; font-size: medium">Describe your store!</p>
+
+<form (ngSubmit)="UpdateAbout()" class="text-center pl-5 pr-5" #updateAbout="ngForm" style="padding-top:0px">
+    <div class="form-group" ngModelGroup="UpdateAbout" #updateAbout="ngModelGroup">
+        <mat-form-field appearance="fill" style="height: 250px;">
+            <mat-label>Describe your store!</mat-label>
+            <textarea matInput style="height: 200px;" ngModel name="About" #About="ngModel"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit">
+               Update!
+        </button>
+    </div>
+</form>
+

@@ -38,6 +38,8 @@ import { ShopMenuComponent } from './vendor-dashboard/shop-menu/shop-menu.compon
 import { JoinUsComponent } from './vendor-page/details/join-us/join-us.component';
 import { OverallProcessComponent } from './vendor-page/details/overall-process/overall-process.component';
 import { StoresComponent } from './stores/stores.component';
+import { CurrentOrdersComponent } from './vendor-dashboard/current-orders/current-orders.component';
+import { ChefAboutUploadComponent } from './vendor-dashboard/chef-about-upload/chef-about-upload.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,7 +71,9 @@ const appRoutes: Routes = [
     ShopMenuComponent,
     JoinUsComponent,
     OverallProcessComponent,
-    StoresComponent
+    StoresComponent,
+    CurrentOrdersComponent,
+    ChefAboutUploadComponent
   ],
   imports: [
     BrowserModule,

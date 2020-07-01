@@ -1,13 +1,50 @@
-<div class="container">
-    <mat-tab-group dynamicHeight style="margin-top: 200px;">
-        <mat-tab label="Upload Dish">
-          <app-dish-upload [currentVendorID]="currentVendorID" ></app-dish-upload>
-        </mat-tab>
-        <mat-tab label="Shop Data">
-          <app-shop-data [currentVendorID]="currentVendorID"></app-shop-data>
-        </mat-tab>
-        <mat-tab label="Shop Menu">
-          <app-shop-menu [currentVendorID]="currentVendorID"></app-shop-menu>
-        </mat-tab>
-    </mat-tab-group>
+
+<div class="row align-self-end" style="background-image: url({{Image + HomeImage}}); 
+  background-size: cover; height: 450px;">
+  <div class="col row justify-content-center">
+      <img src="{{Image + ProfileImage}}" style="border-radius: 50%;
+        margin-top: 350px; height: 200px; width: 200px; border:solid medium black">
+  </div>
+   
 </div>
+<div class="row justify-content-center align-items-end" style="padding-top: 130px;">
+  <div class="col row justify-content-center">
+    <button mat-raised-button (click)="ProfileInput.click()" style="margin-left: -10px;">
+      <p>EDIT PROFILE</p>
+    </button>
+    <button mat-raised-button (click)="HomeInput.click()" style="margin-right: 10px; margin-left: 10px;">
+      <p>EDIT HOME</p>
+    </button>
+    <button mat-raised-button (click)="openAboutDialog()">
+      <p>EDIT ABOUT</p>
+    </button>
+  </div>
+  <input #HomeInput id="HomePic-upload" formControlName="home" type="file" name="file" accept="image/*" (change)="onHomePicChanged(HomeInput.files)"
+  style="display: none;">
+  <input #ProfileInput id="upload-image" formControlName="image" type="file" name="file" accept="image/*" (change)="onProfileChanged(ProfileInput.files)"
+  style="display: none;">
+</div>
+
+
+<div class="row" style="margin-top: 50px;">
+  <div class="col align-self-center">
+    <h1 style="text-align: center; padding-right: 20px;">WELCOME BACK {{StoreName}}!</h1>
+  </div>
+</div>
+
+  <div class="container">
+      <mat-tab-group dynamicHeight>
+          <mat-tab label="Upload Dish">
+            <app-dish-upload [currentVendorID]="currentVendorID" ></app-dish-upload>
+          </mat-tab>
+          <mat-tab label="Shop Data">
+            <app-shop-data [currentVendorID]="currentVendorID"></app-shop-data>
+          </mat-tab>
+          <mat-tab label="Shop Menu">
+            <app-shop-menu [currentVendorID]="currentVendorID"></app-shop-menu>
+          </mat-tab>
+          <mat-tab label="Current Orders">
+            <app-current-orders [currentVendorID]="currentVendorID"></app-current-orders>
+          </mat-tab>
+      </mat-tab-group>
+  </div>

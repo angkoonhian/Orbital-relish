@@ -20,10 +20,12 @@ export class HeaderComponent implements OnInit {
   atVendorPage: boolean;
   VendorisLoggedIn: boolean;
   UserisLoggedIn: boolean;
+  UserName: '';
   constructor(private dialog: MatDialog, private router: Router, private authService: authService) {
     this.authService.isVendorPage.subscribe((state: boolean) => {this.atVendorPage = state});
     this.authService.VendorLoggedIn.subscribe((state: boolean) => {this.VendorisLoggedIn = state});
     this.authService.UserLoggedIn.subscribe((state: boolean) => {this.UserisLoggedIn = state});
+    this.authService.UserName.subscribe((Name:'') => {this.UserName = Name});
   }
 
   ngOnInit() {}

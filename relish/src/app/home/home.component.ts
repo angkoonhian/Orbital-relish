@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   zoom: number;
   address: string;
   private geoCoder;
+  Image = 'http://relish.dyndns-remote.com/RelishBackend/';
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
@@ -108,13 +109,19 @@ export class HomeComponent implements OnInit {
   }
 
   private fetchData() {
-    this.http.get('http://relish.dyndns-remote.com/RelishBackend/Dishes.php')
+    this.http.get('http://relish.dyndns-remote.com/RelishBackend/Stores.php')
     .pipe(
          map(responseData => {
            var i;
            var responseDataLength = Object.keys(responseData).length;
            const DishArray = [];
            for (i=0; i<responseDataLength; i++) {
+             if (!responseData[i].ProfileImage) {
+               responseData[i].ProfileImage = 'ProfileImage/Default.jpg'
+             }
+             if (!responseData[i].HomePic) {
+               responseData[i].HomePic = 'HomeImage/Default.jpg';
+             }
              DishArray.push(responseData[i]);
            }
            this.loadedPosts = DishArray;

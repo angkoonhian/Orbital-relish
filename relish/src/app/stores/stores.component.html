@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xl-12 col-sm-12 justify-content-around" style="background-image:url(https://material.angular.io/assets/img/examples/shiba2.jpg);
+    <div class="col-xl-12 col-sm-12 justify-content-around" style="background-image:url({{DishImage + currentStore.HomePic}});
      height: 400px; background-size:cover; filter: brightness(100%);">
         <section ></section>
     </div>
@@ -10,8 +10,8 @@
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="row col-lg-8 col-md-8 col-xs-12 justify-content-center" *ngIf="Menu.length>=1">
-        <div class="justify-content-center col-xl-4 col-lg-4 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let dish of Menu">
+    <div class="row col-lg-9 col-md-8 col-xs-12 justify-content-center" *ngIf="Menu.length>=1">
+        <div class="justify-content-center col-xl-4 col-lg-6 col-md-8 col-xs-12" style="margin-top:50px;" *ngFor="let dish of Menu">
             <mat-card class="example-card">
                 <mat-card-header style="padding-bottom:10px;">
                   <div class="col-4 justify-content-start">
@@ -29,7 +29,7 @@
                     </button>
                   </div>
                 </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img mat-card-image src="{{DishImage + dish.Image}}" alt="Photo of a Shiba Inu" style="height: 250px">
                 <mat-card-content>
                   <p>
                     {{dish.Description}}
@@ -38,7 +38,8 @@
               </mat-card>
         </div>
     </div>
-    <div class="row col-xl-2 col-lg-2 col-md-2 col-xs-12 justify-content-center" *ngIf="Orders.length>=1" style="padding-top: 10px;">
+    <div class="row col-xl-2 col-lg-4 col-md-4 col-xs-12 justify-content-center" *ngIf="Orders.length>=1" style="padding-top: 10px;
+      box-shadow: 5px 10px 8px; margin-left: 10px;">
       <div class="row col-12 justify-content-center">
         <h1>Your Order at {{currentStore.VendorName}}</h1>
       </div>

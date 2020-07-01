@@ -4,11 +4,16 @@ import { NgForm, FormControl, Validators, FormGroupDirective } from '@angular/fo
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { Order } from './Order-model';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class currentOrder {
+export class chefDetails {
+
+    constructor(private Http: HttpClient) {}
+
+    chefDash(VendorID: string) {
+        return this.Http.post<any>('http://relish.dyndns-remote.com/RelishBackend/StoreDetails.php', VendorID);
+    }
 }

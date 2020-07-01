@@ -33,6 +33,9 @@ export class LoginDialogComponent implements OnInit {
     .subscribe( data => {
       this.router.navigate([this.router.url])
       this.authService.changeUserLoginStatus(true);
+      this.authService.changeUser(String(Object.values(data[0])[0]))
+      console.log(data)
+      this.authService.changeUserName(String(Object.values(data[0])[1]))
     }, error => {
       alert("Username of password is incorrect")
     });

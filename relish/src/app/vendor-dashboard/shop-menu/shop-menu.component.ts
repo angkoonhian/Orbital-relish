@@ -14,6 +14,10 @@ export class ShopMenuComponent implements OnInit {
 
   Menu: Dishes[] = [];
   DishID = '';
+  DishImage = 'http://relish.dyndns-remote.com/RelishBackend/';
+  Store = {
+    VendorID: ''
+  }
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -25,7 +29,8 @@ export class ShopMenuComponent implements OnInit {
   }
 
   public OnFetchMenu() {
-    this.http.post('http://relish.dyndns-remote.com/RelishBackend/VendorMenu.php', this.currentVendorID)
+    this.Store.VendorID = this.currentVendorID
+    this.http.post('http://relish.dyndns-remote.com/RelishBackend/ChefMenu.php', this.Store)
     .pipe(
          map(responseData => {
            var i;

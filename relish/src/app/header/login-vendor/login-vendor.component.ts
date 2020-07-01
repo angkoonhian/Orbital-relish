@@ -4,7 +4,6 @@ import { NgForm, FormControl, Validators, FormGroupDirective } from '@angular/fo
 import { HttpClient } from '@angular/common/http';
 import { map, first } from 'rxjs/operators';
 import { authService } from '../../services/auth-service';
-import { Vendor } from 'src/app/services/Vendor-model';
 
 @Component({
   selector: 'app-login-vendor',

@@ -11,6 +11,13 @@
                 <input matInput required id="Price" name="Price" ngModel #Price="ngModel">
               </mat-form-field>
               <br>
+              <p>
+                <input #imageInput id="upload-image" formControlName="image" type="file" name="file" accept="image/*" (change)="onFileChanged(imageInput.files)">
+              </p>
+              <br>
+              <p>{{selectedFile}}</p>
+              <img [src]="imgURL" height="200" *ngIf="imgURL" style="padding-bottom: 20px; height: 250px; width: 250px;">
+              <br>
               <mat-form-field appearance="fill" style="width: 300px;">
                 <mat-label>Dish Description</mat-label>
                 <textarea matInput style="height: 260px;" required id="Description" name="Description" ngModel></textarea>

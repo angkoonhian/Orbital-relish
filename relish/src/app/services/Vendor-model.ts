@@ -1,11 +1,12 @@
-export class Vendor {
-    constructor(
-        public VendorName: string,
-        public password: string,
-        public email: string,
-        public phoneNumber: string,
-        public address: string,
-        public postalCode: string,
-        public cuisine: string
-    ) {}
+export class vendor {
+    public VendorID: string;
+    public VendorName: number;
+    public Location: string;
+    public Cuisines: string;
+    public Address: string;
+    public PostalCode: string;
+    public ProfileImage: string;
+    public HomePic: string;
+    public About: string;
+
 }

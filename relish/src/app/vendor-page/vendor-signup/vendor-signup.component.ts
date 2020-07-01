@@ -84,7 +84,7 @@ export class VendorSignupComponent implements OnInit {
 
   onRegister(user: {username: string, password: string, email: string, phoneNumber: string,
     address: string, postalCode: string, cuisine: string} ) {
-      this.http.post<any>("http://relish.dyndns-remote.com/RelishBackend/VendorRegister.php", user)
+      this.http.post<any>("http://relish.dyndns-remote.com/RelishBackend/ChefRegister.php", user)
       .subscribe(resData => {
         console.log(resData)
       });

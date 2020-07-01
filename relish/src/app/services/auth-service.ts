@@ -4,7 +4,6 @@ import { NgForm, FormControl, Validators, FormGroupDirective } from '@angular/fo
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { Vendor } from './Vendor-model';
 
 @Injectable({
     providedIn: 'root'
@@ -39,6 +38,20 @@ export class authService {
         this.VendorIsLoggedIn.next(state);
     }
 
+    private currentUserID = new BehaviorSubject('');
+    UserID = this.currentUserID.asObservable();
+    
+    changeUser(UserID: string) {
+        this.currentUserID.next(UserID);
+    }
+
+    private currentUserName = new BehaviorSubject('');
+    UserName = this.currentUserName.asObservable();
+
+    changeUserName(UserName: string) {
+        this.currentUserName.next(UserName);
+    }
+
     private currentStoreID = new BehaviorSubject('');
     StoreID = this.currentStoreID.asObservable();
 
@@ -66,7 +79,7 @@ export class authService {
     }
 
     public VendorLogin(Vendor: {username: string, password: string}) {
-        return this.Http.post<any>('http://relish.dyndns-remote.com/RelishBackend/VendorLogin.php', Vendor)
+        return this.Http.post<any>('http://relish.dyndns-remote.com/RelishBackend/ChefLogin.php', Vendor)
         .pipe(map(vendorModule => {
             this.setToken(vendorModule[0].Email);
             this.getLoggedInName.emit(true);

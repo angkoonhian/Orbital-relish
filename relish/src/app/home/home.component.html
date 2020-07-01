@@ -64,17 +64,18 @@
 
 <div class="row justify-content-center">
     <div class="row col-xl-9 col-lg-9 col-md-9 col-xs-12 justify-content-center" *ngIf="loadedPosts.length>=1" style="width: 90%;">
-        <div class="justify-content-center col-xl-4 col-lg-4 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let post of loadedPosts">
+        <div class="justify-content-center col-xl-4 col-lg-6 col-md-6 col-xs-12" style="margin-top:50px;" *ngFor="let post of loadedPosts">
             <mat-card class="example-card">
                 <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
+                  <div mat-card-avatar style="background-image: url({{Image + post.ProfileImage}}); background-size: cover"></div>
                   <mat-card-title>{{post.VendorName}}</mat-card-title>
                   <mat-card-subtitle>{{post.Location}}</mat-card-subtitle>
+                  <p style="padding-left: 50px;">{{post.Cuisines}}</p>
                 </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img mat-card-image src="{{Image + post.HomePic}}" alt="Photo of a Shiba Inu" style="height: 250px;">
                 <mat-card-content>
                   <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    {{post.About}}
                   </p>
                 </mat-card-content>
                 <mat-card-actions>
