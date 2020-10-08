@@ -14,6 +14,6 @@
  
 |Tech demo|
 |---|
-|https://drive.google.com/file/d/1zZm0mbqV29PbaT6hSPbB2-5IFmW4bqO3/view?usp=sharing|
+|http://relish.dyndns-remote.com/relish/|
 <h4>This module was complete under module CP2106</h4>
 <h4>This repository only contains the files for the Web Application</h4>
